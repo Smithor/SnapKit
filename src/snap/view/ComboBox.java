@@ -14,6 +14,9 @@ import snap.util.*;
  * A View that combines a TextField, Button and List to allow selection of list items in the space of a TextField
  * and/or button. The default form just shows a button that triggers a popup list. The ShowTextField option adds a
  * TextField for editing. This form can also be attached to any ListView to conveniently find items in a long list.
+ *
+ * @param <T> The type of the object that this ComboBox contains a list of.
+ *           Example: ComboBox<String> will contain a list of String objects.
  */
 public class ComboBox <T> extends ParentView implements Selectable<T> {
 
