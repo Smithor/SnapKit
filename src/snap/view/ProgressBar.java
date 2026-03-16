@@ -60,6 +60,8 @@ public class ProgressBar extends View {
 
     /**
      * Sets the value of the progress bar.
+     * @param aValue a double between 0 and 1 that represents the percentage of the bar that has been filled in (0 for
+     *               0%, 1 for 100%)
      */
     public void setProgress(double aValue)
     {
