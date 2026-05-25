@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/Smithor/SnapKit.svg)](https://jitpack.io/#Smithor/SnapKit)
 # SnapKit - a Java UI toolkit
 
 SnapKit is a modern Java UI library + tools for creating rich Java Client applications that achieve the original
@@ -450,16 +451,39 @@ here to make it easier to debug visual layouts and explore new or large code bas
 
 SnapKit can easily be included with build tools like Gradle by referencing the maven package:
 
-```
-repositories {
+### Maven
+Add to pom.xml
 
-    // Maven package repo at reportmill.com
-    maven { url 'https://reportmill.com/maven' }
-}
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
-dependencies {
+Step 2. Add the dependency
 
-    // Latest release: https://github.com/reportmill/SnapKit/releases
-    implementation 'com.reportmill:snapkit:2026.03'
-}
-```
+	<dependency>
+	    <groupId>com.github.Smithor</groupId>
+	    <artifactId>SnapKit</artifactId>
+	    <version>Tag</version>
+	</dependency>
+
+### Gradle
+
+Add it in your root settings.gradle at the end of repositories:
+
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.Smithor:SnapKit:Tag'
+	}
+
