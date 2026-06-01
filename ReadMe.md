@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/Smithor/SnapKit.svg)](https://jitpack.io/#Smithor/SnapKit)
 # SnapKit - a Java UI toolkit
 
 SnapKit is a modern Java UI library + tools for creating rich Java Client applications that achieve the original
@@ -75,12 +76,12 @@ whole thing to the browser:
 - The ViewController class provides control functionally
 - The ViewEvent class unifies all input events for more consistent handling
 
-    
+
 ## The ViewController
 
 The one thing that may have hurt Swing and JavaFX the most is that there is no standard class to manage the basics of UI
 management: Create, Init, Reset, Respond (otherwise known as the "Controller" in MVC).
-    
+
 This resulted in confusing controller code, with UI controls often having code for all four functions
 in the same place. Initially this can be deceptively simple and attractive, but falls apart when dozens of inter-dependent
 controls are present and order-dependent updates are necessary.
@@ -143,18 +144,18 @@ public void respondUI(ViewEvent anEvent)
 Some things to note:
 
 **CreateUI()** is usually handled automatically by loading a '.snp' UI file created in SnapBuilder.
-    
+
 **InitUI()** is also usually not needed, because UI is configured in createUI() and updated in ResetUI().
-    
+
 **ResetUI()** updates are deferred, coalesced and "protected" (will not cause respondUI() side effects) and
 is called automatically when the user interacts with any UI (or explicitly via resetLater()).
-    
+
 **RespondUI()** is called automatically by controls (they are preconfigured to do this by default)
-    
+
 **ResetUI()** and **RespondUI()** make tracking UI interactions convenient and easy by providing a consistent
 place to look for all get/set code between controls and the model.
-    
-    
+
+
 ## <a name="UniversalAccessors">ViewController "Universal Accessors"</a>
 
 As a convenience, ViewController will let you get/set values using standard methods and support all controls, which
@@ -279,16 +280,16 @@ undo/redo and more. Specifically the props support provides the following:
 This serialization is done by simply defining each serializable property of an object in this fashion:
 
 - Define **string constant** for property name  
-```public static String Name_Prop = "Name";```
+  ```public static String Name_Prop = "Name";```
 
 - Configure prop in **initProps()** method of class  
-```addPropNamed(Name_Prop, <PropClass>, <DefaultValue>)```
+  ```addPropNamed(Name_Prop, <PropClass>, <DefaultValue>)```
 
 - Provide getter in **getPropValue(aPropName)**  
-```if (aPropValue == Name_Prop) return getName();```
+  ```if (aPropValue == Name_Prop) return getName();```
 
 - Provide setter in **setPropValue(aPropName,aValue)**  
-```if (aPropValue == Name_Prop) setName((String) aValue);```
+  ```if (aPropValue == Name_Prop) setName((String) aValue);```
 
 Here is an example class that can automatically read/write sparse JSON/XML, handle clipboard copy/pase and handle undo:
 
@@ -362,21 +363,21 @@ The package provides fundamental classes for creating many games like Asteroids,
 classes are great for educational and recreational purposes.
 
 - **Actor**
-  - Models individual game entities like a spaceship, asteroid, bullet, etc.
-  - Manages location, size, rotation and movement
-  - Manages painting, user input, frame behavior and collision detection
+    - Models individual game entities like a spaceship, asteroid, bullet, etc.
+    - Manages location, size, rotation and movement
+    - Manages painting, user input, frame behavior and collision detection
 - **StageView**
-  - Manages a list of actors
-  - Manages the game timer (play, pause, stop, framerate)
-  - Manages background painting, user input and collision detection
+    - Manages a list of actors
+    - Manages the game timer (play, pause, stop, framerate)
+    - Manages background painting, user input and collision detection
 - **GameController**
-  - Manages top level UI and the current stage view
+    - Manages top level UI and the current stage view
 - **DevConsole**
-  - Shows the game controller with ability to play, pause, step, set frame speed, etc.
+    - Shows the game controller with ability to play, pause, step, set frame speed, etc.
 - **PenActor**
-  - Proves functionality for pen graphics
+    - Proves functionality for pen graphics
 - **Game**
-  - Manages global state and game resources (images, sounds, etc.)
+    - Manages global state and game resources (images, sounds, etc.)
 
 Check out the **[source code](https://github.com/reportmill/SnapKit/tree/master/src/snap/games)** and
 **[Javadoc](https://reportmill.com/snap1/javadoc/snap/games/package-summary.html)**.
@@ -450,16 +451,39 @@ here to make it easier to debug visual layouts and explore new or large code bas
 
 SnapKit can easily be included with build tools like Gradle by referencing the maven package:
 
-```
-repositories {
+### Maven
+Add to pom.xml
 
-    // Maven package repo at reportmill.com
-    maven { url 'https://reportmill.com/maven' }
-}
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
-dependencies {
+Step 2. Add the dependency
 
-    // Latest release: https://github.com/reportmill/SnapKit/releases
-    implementation 'com.reportmill:snapkit:2026.03'
-}
-```
+	<dependency>
+	    <groupId>com.github.Smithor</groupId>
+	    <artifactId>SnapKit</artifactId>
+	    <version>Tag</version>
+	</dependency>
+
+### Gradle
+
+Add it in your root settings.gradle at the end of repositories:
+
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.Smithor:SnapKit:Tag'
+	}
+
