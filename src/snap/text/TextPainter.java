@@ -161,9 +161,6 @@ public class TextPainter {
      */
     public void paintTextAdapterTextSel(Painter aPntr, TextAdapter textAdapter)
     {
-        // If not editable, just return
-        if (!textAdapter.isEditable()) return;
-
         // Get selection path
         TextSel textSel = textAdapter.getSel();
         Shape selPath = textSel.getPath();
